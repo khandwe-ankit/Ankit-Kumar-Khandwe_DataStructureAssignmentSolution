@@ -1,0 +1,28 @@
+package com.example.question1.service;
+
+import java.util.Collections;
+import java.util.PriorityQueue;
+
+public class Service {
+
+	public void printConstructionTable(int floor[], int noOfFloor) {
+
+		System.out.println("The order of construction will be as follows");
+
+		PriorityQueue<Integer> queue = new PriorityQueue<>(Collections.reverseOrder());
+		int[] tempArray = new int[noOfFloor];
+		int max = noOfFloor;
+
+		for (int i = 0; i < noOfFloor; i++) {
+			System.out.println("Day: " + (i + 1));
+			tempArray[i] = floor[i];
+			queue.add(tempArray[i]);
+
+			while (!queue.isEmpty() && queue.peek() == max) {
+				System.out.print(queue.poll() + " ");
+				max--;
+			}
+			System.out.println();
+		}
+	}
+}
